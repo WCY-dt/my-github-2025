@@ -1,7 +1,7 @@
 {
   "json.schemaDownload.enable": false,
   "files.associations": {
-    "my-github-2024": "nginx",
+    "my-github-2025": "nginx",
     "*.service": "ini",
     "*.html": "liquid"
   },

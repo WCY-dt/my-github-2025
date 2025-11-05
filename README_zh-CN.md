@@ -1,15 +1,15 @@
 <div align="center">
   <img src="logo.png" alt="logo" />
 
-  统计 2024 年你在 GitHub 上的活动.
+  统计 2025 年你在 GitHub 上的活动.
 
   [English](README.md) | 简体中文
 
-  [![Server Status](https://img.shields.io/badge/dynamic/json?logo=linux&color=brightgreen&label=Server%20status&query=%24.status&cacheSeconds=600&url=https%3A%2F%2F2024.ch3nyang.top%2Fstatus)](https://2024.ch3nyang.top)
+  [![Server Status](https://img.shields.io/badge/dynamic/json?logo=linux&color=brightgreen&label=Server%20status&query=%24.status&cacheSeconds=600&url=https%3A%2F%2F2025.ch3nyang.top%2Fstatus)](https://2025.ch3nyang.top)
 
-  [![GitHub issues](https://img.shields.io/github/issues/WCY-dt/my-github-2024)](https://github.com/WCY-dt/my-github-2024/issues) [![GitHub pull requests](https://img.shields.io/github/issues-pr/WCY-dt/my-github-2024)](https://github.com/WCY-dt/my-github-2024/pulls) [![GitHub license](https://img.shields.io/github/license/WCY-dt/my-github-2024)](https://github.com/WCY-dt/my-github-2024/blob/main/LICENSE)
+  [![GitHub issues](https://img.shields.io/github/issues/WCY-dt/my-github-2025)](https://github.com/WCY-dt/my-github-2025/issues) [![GitHub pull requests](https://img.shields.io/github/issues-pr/WCY-dt/my-github-2025)](https://github.com/WCY-dt/my-github-2025/pulls) [![GitHub license](https://img.shields.io/github/license/WCY-dt/my-github-2025)](https://github.com/WCY-dt/my-github-2025/blob/main/LICENSE)
 
-  <strong style="font-size: 24px;">👉 立即体验: <a href="https://2024.ch3nyang.top">https://2024.ch3nyang.top</a></strong>
+  <strong style="font-size: 24px;">👉 立即体验: <a href="https://2025.ch3nyang.top">https://2025.ch3nyang.top</a></strong>
 </div>
 
 ## 示例
@@ -20,13 +20,13 @@
 
 > [!TIP]
 >
-> **新功能**：现在支持选择 2008 年至 2024 年的任意年份生成报告。
+> **新功能**：现在支持选择 2008 年至 2025 年的任意年份生成报告。
 
-1. 访问 [https://2024.ch3nyang.top](https://2024.ch3nyang.top)。
+1. 访问 [https://2025.ch3nyang.top](https://2025.ch3nyang.top)。
 
 2. 点击 `Sign in with GitHub` 按钮，授权登录。
 
-3. 选择你所在的时区和需要生成的年份，然后点击 `Generate` 按钮，稍等几秒，即可查看 2024 年你在 GitHub 上的活动。
+3. 选择你所在的时区和需要生成的年份，然后点击 `Generate` 按钮，稍等几秒，即可查看 2025 年你在 GitHub 上的活动。
 
 ## 本地运行
 
@@ -37,8 +37,8 @@
 1. 克隆仓库：
 
     ```bash
-    git clone https://github.com/WCY-dt/my-github-2024.git
-    cd my-github-2024
+    git clone https://github.com/WCY-dt/my-github-2025.git
+    cd my-github-2025
     ```
 
 2. 创建 Github OAuth App：
@@ -63,7 +63,7 @@
 5. 运行：
 
     ```bash
-    python my-github-2024.py
+    python my-github-2025.py
     ```
 
 6. 访问 `http://127.0.0.1:5000` 即可查看效果。

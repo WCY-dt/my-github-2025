@@ -12,9 +12,9 @@ class Config:
     """Base configuration class."""
     
     # Application constants - year configuration
-    PROJECT_YEAR = "2024"
+    PROJECT_YEAR = "2025"
     MIN_YEAR = 2008
-    CURRENT_YEAR = 2024
+    CURRENT_YEAR = 2025
     
     SECRET_KEY = os.urandom(24)
     CLIENT_ID = os.getenv("CLIENT_ID")
