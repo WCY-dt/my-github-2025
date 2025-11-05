@@ -146,17 +146,15 @@ def get_context(username: str, token: str, year: int, time_zone: str) -> dict:
     name = username
     if data["basic"]["name"]:
         name = data["basic"]["name"]
-    # Days since account creation
+    # Days since account creation (rounded to nearest 100)
+    # Round up to nearest 100 for privacy
+    days_since_creation = (
+        datetime.now() - datetime.strptime(data["basic"]["created_time"], "%Y-%m-%dT%H:%M:%SZ")
+    ).days
+    # Round to nearest 100
+    rounding_factor = 100
     created_time = (
-        (
-            (
-                datetime.now()
-                - datetime.strptime(data["basic"]["created_time"], "%Y-%m-%dT%H:%M:%SZ")
-            ).days
-            + 99
-        )
-        // 100
-        * 100
+        (days_since_creation + rounding_factor - 1) // rounding_factor * rounding_factor
     )
     # Number of followers
     followers_num = data["basic"]["follower"]

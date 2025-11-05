@@ -17,7 +17,7 @@ class DataService:
     """Service for data processing operations."""
 
     @staticmethod
-    def process_user_data(username: str, access_token: str, year: int, timezone: str):
+    def process_user_data(username: str, access_token: str, year: int, timezone: str) -> None:
         """Process user data in a background thread."""
         # Get the current app instance before starting the thread
         app = current_app._get_current_object()
@@ -41,6 +41,7 @@ class DataService:
                 GitHubService.star_repository(access_token)
 
         fetch_thread = threading.Thread(target=fetch_data)
+        fetch_thread.daemon = True  # Ensure thread doesn't prevent shutdown
         fetch_thread.start()
 
     @staticmethod

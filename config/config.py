@@ -10,27 +10,28 @@ load_dotenv()
 
 class Config:
     """Base configuration class."""
-    
+
     # Application constants - year configuration
     PROJECT_YEAR = "2025"
     MIN_YEAR = 2008
     CURRENT_YEAR = 2025
-    
-    SECRET_KEY = os.urandom(24)
+
+    # Secret key should be set from environment or generated once
+    SECRET_KEY = os.getenv("SECRET_KEY") or os.urandom(24).hex()
     CLIENT_ID = os.getenv("CLIENT_ID")
     CLIENT_SECRET = os.getenv("CLIENT_SECRET")
     SQLALCHEMY_DATABASE_URI = f"sqlite:///my-github-{PROJECT_YEAR}.db"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    
+
     # GitHub API URLs
     GITHUB_AUTHORIZE_URL = "https://github.com/login/oauth/authorize"
     GITHUB_TOKEN_URL = "https://github.com/login/oauth/access_token"
     GITHUB_API_BASE_URL = "https://api.github.com"
     GITHUB_GRAPHQL_URL = "https://api.github.com/graphql"
-    
+
     # Application constants
     STAR_REPO = f"WCY-dt/my-github-{PROJECT_YEAR}"
-    
+
     # Request timeout
     REQUEST_TIMEOUT = 10
 

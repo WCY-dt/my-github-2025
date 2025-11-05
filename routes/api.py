@@ -23,7 +23,8 @@ def health_check():
 @api_bp.route("/debug/routes", methods=["GET"])
 def debug_routes():
     """Debug endpoint to show all routes."""
-    from flask import current_app
+    from flask import current_app  # pylint: disable=import-outside-toplevel
+
     routes = []
     for rule in current_app.url_map.iter_rules():
         routes.append({

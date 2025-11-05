@@ -178,9 +178,11 @@ def _get_repo(
                 commit_after = end_cursor
 
                 while True:
-                    tryTimes = 0
+                    try_times = 0
                     commit_result = None
-                    while tryTimes < 3:
+                    max_retries = 3
+
+                    while try_times < max_retries:
                         try:
                             commit_result = _get_commit(
                                 user_name, user_id, token, year, repo_name, commit_after
@@ -206,10 +208,12 @@ def _get_repo(
                                 break
                         except Exception as e:
                             logging.error(
-                                "Unexpected error: Failed to get commit info: %s.",
+                                "Unexpected error: Failed to get commit info (attempt %d/%d): %s.",
+                                try_times + 1,
+                                max_retries,
                                 e,
                             )
-                            tryTimes += 1
+                            try_times += 1
 
                     if not commit_result:
                         break
@@ -386,14 +390,6 @@ def get_github_info(username: str, token: str, year: int) -> dict:
             logging.error(
                 "Unexpected error: Failed to get repo info: %s. Trying to decrease the interval.",
                 e,
-            )
-            interval = interval // 2
-
-            if interval < 1:
-                raise ValueError("Failed to get repo info") from e
-        else:
-            logging.error(
-                "Unexpected error: Failed to get repo info. Trying to decrease the interval."
             )
             interval = interval // 2
 
