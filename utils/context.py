@@ -149,7 +149,8 @@ def get_context(username: str, token: str, year: int, time_zone: str) -> dict:
     # Days since account creation (rounded to nearest 100)
     # Round up to nearest 100 for privacy
     days_since_creation = (
-        datetime.now() - datetime.strptime(data["basic"]["created_time"], "%Y-%m-%dT%H:%M:%SZ")
+        datetime.now()
+        - datetime.strptime(data["basic"]["created_time"], "%Y-%m-%dT%H:%M:%SZ")
     ).days
     # Round to nearest 100
     rounding_factor = 100

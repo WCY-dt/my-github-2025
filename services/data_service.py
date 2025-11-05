@@ -17,9 +17,13 @@ class DataService:
     """Service for data processing operations."""
 
     @staticmethod
-    def process_user_data(username: str, access_token: str, year: int, timezone: str) -> None:
+    def process_user_data(
+        username: str, access_token: str, year: int, timezone: str
+    ) -> None:
         """Process user data in a background thread."""
         # Get the current app instance before starting the thread
+        # pylint: disable=protected-access
+        # This is the recommended Flask pattern for accessing app context in threads
         app = current_app._get_current_object()
 
         def fetch_data():

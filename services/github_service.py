@@ -43,7 +43,7 @@ class GitHubService:
             user_response = requests.get(
                 f"{Config.GITHUB_API_BASE_URL}/user",
                 headers=headers,
-                timeout=Config.REQUEST_TIMEOUT
+                timeout=Config.REQUEST_TIMEOUT,
             )
             user_response.raise_for_status()
             return user_response.json()

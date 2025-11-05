@@ -69,7 +69,7 @@ def _get_repo(
 ) -> dict:
 
     query = """
-    query($username: String!, $id: ID!, $since: GitTimestamp!, $until: GitTimestamp!, $after: String) {
+    query($username: String!, $id: ID!, $since: GitTimestamp!, $until: GitTimestamp!, $after: String) {  # noqa: E501
         user(login: $username) {
             repositories(first: %d, after: $after) {
                 nodes {
@@ -87,7 +87,7 @@ def _get_repo(
                     defaultBranchRef {
                         target {
                             ... on Commit {
-                                history(first: 100, since: $since, until: $until, author: {id: $id}) {
+                                history(first: 100, since: $since, until: $until, author: {id: $id}) {  # noqa: E501
                                     nodes {
                                         message
                                         committedDate
@@ -262,13 +262,13 @@ def _get_commit(
     user_name: str, user_id: str, token: str, year: int, repo_name: str, after: str
 ) -> dict:
     query = """
-    query($username: String!, $id: ID!, $since: GitTimestamp!, $until: GitTimestamp!, $repo_name: String!, $after: String) {
+    query($username: String!, $id: ID!, $since: GitTimestamp!, $until: GitTimestamp!, $repo_name: String!, $after: String) {  # noqa: E501
         user(login: $username) {
             repository(name: $repo_name) {
                 defaultBranchRef {
                     target {
                         ... on Commit {
-                            history(first: 100, since: $since, until: $until, author: {id: $id}, after: $after) {
+                            history(first: 100, since: $since, until: $until, author: {id: $id}, after: $after) {  # noqa: E501
                                 nodes {
                                     message
                                     committedDate

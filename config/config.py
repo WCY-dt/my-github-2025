@@ -25,7 +25,7 @@ class Config:
 
     # GitHub API URLs
     GITHUB_AUTHORIZE_URL = "https://github.com/login/oauth/authorize"
-    GITHUB_TOKEN_URL = "https://github.com/login/oauth/access_token"
+    GITHUB_TOKEN_URL = "https://github.com/login/oauth/access_token"  # nosec B105
     GITHUB_API_BASE_URL = "https://api.github.com"
     GITHUB_GRAPHQL_URL = "https://api.github.com/graphql"
 
@@ -38,6 +38,7 @@ class Config:
 
 class DevelopmentConfig(Config):
     """Development configuration."""
+
     DEBUG = True
     # Enable template auto-reload for development
     TEMPLATES_AUTO_RELOAD = True
@@ -45,11 +46,12 @@ class DevelopmentConfig(Config):
 
 class ProductionConfig(Config):
     """Production configuration."""
+
     DEBUG = False
 
 
 config = {
-    'development': DevelopmentConfig,
-    'production': ProductionConfig,
-    'default': DevelopmentConfig
+    "development": DevelopmentConfig,
+    "production": ProductionConfig,
+    "default": DevelopmentConfig,
 }

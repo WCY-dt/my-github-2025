@@ -95,7 +95,7 @@ def wait(year):
         return redirect(url_for("auth.index"))
 
     # Validate year range
-    if not (Config.MIN_YEAR <= year <= Config.CURRENT_YEAR):
+    if not Config.MIN_YEAR <= year <= Config.CURRENT_YEAR:
         return redirect(url_for("main.dashboard"))
 
     username = session.get("username")
@@ -120,7 +120,7 @@ def display(year):
         return redirect(url_for("auth.index"))
 
     # Validate year range
-    if not (Config.MIN_YEAR <= year <= Config.CURRENT_YEAR):
+    if not Config.MIN_YEAR <= year <= Config.CURRENT_YEAR:
         return redirect(url_for("main.dashboard"))
 
     username = session.get("username")

@@ -5,7 +5,7 @@ API routes for status and health checks.
 from datetime import datetime
 from flask import Blueprint, jsonify
 
-api_bp = Blueprint('api', __name__)
+api_bp = Blueprint("api", __name__)
 
 
 @api_bp.route("/status", methods=["GET"])
@@ -27,9 +27,11 @@ def debug_routes():
 
     routes = []
     for rule in current_app.url_map.iter_rules():
-        routes.append({
-            'endpoint': rule.endpoint,
-            'methods': list(rule.methods),
-            'rule': str(rule)
-        })
+        routes.append(
+            {
+                "endpoint": rule.endpoint,
+                "methods": list(rule.methods),
+                "rule": str(rule),
+            }
+        )
     return jsonify(routes)
