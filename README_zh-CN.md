@@ -14,7 +14,9 @@
 
 ## 示例
 
-![example](example.png)
+<div align="center">
+  <img src="example.png" alt="example-2025" style="width:min(500px,100%)" />
+</div>
 
 ## 使用方法
 
@@ -27,6 +29,8 @@
 2. 点击 `Sign in with GitHub` 按钮，授权登录。
 
 3. 选择你所在的时区和需要生成的年份，然后点击 `Generate` 按钮，稍等几秒，即可查看 2025 年你在 GitHub 上的活动。
+
+> 在你生成统计数据时，该程序会使用你的 GitHub 账号自动为本项目的 GitHub 仓库加一颗 Star。此举是为了支持该项目并表达对免费服务的感谢。
 
 ## 本地运行
 

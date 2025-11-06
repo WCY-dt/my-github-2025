@@ -14,7 +14,9 @@
 
 ## Example
 
-![example](example.png)
+<div align="center">
+  <img src="example.png" alt="example-2025" style="width:min(500px,100%)" />
+</div>
 
 ## Usage
 
@@ -27,6 +29,8 @@
 2. Click the `Sign in with GitHub` button and authorize login.
 
 3. Select your time zone and the year you want to generate, then click the `Generate` button, wait a few seconds, and you can view your activities on GitHub in 2025.
+
+> When you generate your statistics, this program will automatically give a star to the project's GitHub repository using your GitHub account. This is done to support the project and show appreciation for the free service.
 
 ## Run locally
 

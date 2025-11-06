@@ -1,5 +1,13 @@
 document.getElementById('inputForm').addEventListener('submit', function (event) {
   event.preventDefault();
+  
+  // Check if consent checkbox is checked
+  var consentCheckbox = document.getElementById('consent');
+  if (!consentCheckbox.checked) {
+    alert("Please read and agree to the user consent and terms before generating statistics.");
+    return;
+  }
+  
   var accessToken = document.getElementById('accessToken').value;
   var username = document.getElementById('username').value;
   var timezone = document.getElementById('timezone').value;

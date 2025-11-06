@@ -65,6 +65,12 @@
           <option value="{{ year }}" {% if year == project_year|int %}selected{% endif %}>{{ year }}</option>
         {% endfor %}
       </select>
+      <div class="consent-checkbox">
+        <input type="checkbox" id="consent" name="consent" required>
+        <label for="consent">
+          I have read and agree to the <a href="/consent" target="_blank">user consent and terms</a>.
+        </label>
+      </div>
       <button type="submit" id="generate">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
           <path

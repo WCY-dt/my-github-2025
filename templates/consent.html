@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My GitHub {{ project_year }} | User Consent</title>
+    <meta name="description" content="User consent and terms for My GitHub {{ project_year }}.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/consent.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.svg') }}" type="image/svg+xml">
+  </head>
+
+  <body>
+    <img src="{{ url_for('static', filename='img/band.svg') }}" alt="My GitHub {{ project_year }}" class="header-image">
+    <div class="consent-container">
+      <h1>User Consent and Terms</h1>
+      
+      <div class="consent-content">
+        <h2>About This Service</h2>
+        <p>
+          My GitHub {{ project_year }} is a service that analyzes and visualizes your GitHub activity 
+          statistics for a specified year. By using this service, you consent to the following:
+        </p>
+
+        <h2>Data Collection and Processing</h2>
+        <ul>
+          <li>
+            <strong>GitHub Data Access:</strong> We will access your GitHub account data through the 
+            GitHub OAuth API to collect information about your public and private repositories, commits, 
+            issues, pull requests, and other activity metrics for the selected year.
+          </li>
+          <li>
+            <strong>Data Storage:</strong> Your processed statistics and access token will be temporarily 
+            stored in our database to enable quick retrieval of your statistics page.
+          </li>
+          <li>
+            <strong>Data Processing:</strong> We will analyze your GitHub activity to generate statistics 
+            including but not limited to: commit patterns, repository contributions, programming language 
+            usage, and activity trends.
+          </li>
+        </ul>
+
+        <h2>Automatic Repository Starring</h2>
+        <p class="important-notice">
+          <strong>⭐ Important:</strong> When you generate your statistics, this program will 
+          <strong>automatically give a star to the project's GitHub repository</strong> 
+          ({{ star_repo }}) using your GitHub account. This is done to support the project 
+          and show appreciation for the free service.
+        </p>
+
+        <h2>Data Privacy and Security</h2>
+        <ul>
+          <li>We do not share your personal information or GitHub data with third parties.</li>
+          <li>Your access token is used solely for fetching your GitHub statistics.</li>
+          <li>We implement appropriate security measures to protect your data.</li>
+          <li>You can revoke this application's access to your GitHub account at any time through 
+              your GitHub account settings.</li>
+        </ul>
+
+        <h2>Service Limitations</h2>
+        <ul>
+          <li>This service is provided "as-is" without warranties of any kind.</li>
+          <li>We are not responsible for any inaccuracies in the generated statistics.</li>
+          <li>The service is subject to GitHub API rate limits and availability.</li>
+          <li>Statistics are generated based on data available through the GitHub API at the time of generation.</li>
+        </ul>
+
+        <h2>Your Rights</h2>
+        <ul>
+          <li>You can revoke access to your GitHub account at any time.</li>
+          <li>You can request deletion of your stored data by contacting the project maintainers.</li>
+          <li>You have the right to know what data we collect and how it is used.</li>
+        </ul>
+
+        <h2>Consent</h2>
+        <p>
+          By checking the consent checkbox on the dashboard and clicking "Star the Project and Generate", 
+          you acknowledge that you have read, understood, and agree to these terms. You explicitly consent to:
+        </p>
+        <ul>
+          <li>The collection and processing of your GitHub activity data</li>
+          <li>The temporary storage of your processed statistics</li>
+          <li>The automatic starring of the project's GitHub repository ({{ star_repo }})</li>
+        </ul>
+
+        <p class="last-updated">
+          Last Updated: November 6, 2024
+        </p>
+      </div>
+
+      <div class="button">
+        <button onclick="window.location.href='/dashboard'" type="button" id="generate">
+          <span>Back to Dashboard</span>
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
