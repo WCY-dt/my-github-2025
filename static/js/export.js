@@ -29,17 +29,23 @@ function fixGradientText(element) {
     if (backgroundClip === 'text') {
       // Save original styles
       const originalColor = el.style.color;
+      const originalBackground = el.style.background;
+      const originalBackgroundImage = el.style.backgroundImage;
       const originalBackgroundClip = el.style.webkitBackgroundClip;
       const originalBackgroundClip2 = el.style.backgroundClip;
       
-      // Set a solid color instead of gradient
+      // Set a solid color instead of gradient and remove background
       el.style.webkitBackgroundClip = 'unset';
       el.style.backgroundClip = 'unset';
       el.style.color = '#007bff';
+      el.style.background = 'transparent';
+      el.style.backgroundImage = 'none';
       
       fixes.push({ 
         element: el, 
         originalColor,
+        originalBackground,
+        originalBackgroundImage,
         originalBackgroundClip,
         originalBackgroundClip2
       });
@@ -53,15 +59,17 @@ function fixGradientText(element) {
  * Restore original styles after capture
  */
 function restoreStyles(fixes) {
-  fixes.forEach(({ element, originalColor, originalBackgroundClip, originalBackgroundClip2 }) => {
+  fixes.forEach(({ element, originalColor, originalBackground, originalBackgroundImage, originalBackgroundClip, originalBackgroundClip2 }) => {
     element.style.color = originalColor;
+    element.style.background = originalBackground;
+    element.style.backgroundImage = originalBackgroundImage;
     element.style.webkitBackgroundClip = originalBackgroundClip;
     element.style.backgroundClip = originalBackgroundClip2;
   });
 }
 
 /**
- * Convert SVG images to inline data URLs for better compatibility
+ * Convert SVG images to canvas/PNG for better compatibility with html2canvas
  */
 async function fixSvgImages(element) {
   const svgImages = element.querySelectorAll('img[src$=".svg"]');
@@ -75,13 +83,41 @@ async function fixSvgImages(element) {
       const response = await fetch(originalSrc);
       const svgText = await response.text();
       
-      // Convert to data URL
-      const dataUrl = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgText);
-      img.src = dataUrl;
+      // Create a new image to load the SVG
+      const svgImage = new Image();
+      svgImage.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgText);
+      
+      // Wait for the image to load
+      await new Promise((resolve, reject) => {
+        svgImage.onload = resolve;
+        svgImage.onerror = reject;
+      });
+      
+      // Create a canvas to convert SVG to PNG
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width || svgImage.width;
+      canvas.height = img.height || svgImage.height;
+      
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(svgImage, 0, 0, canvas.width, canvas.height);
+      
+      // Convert canvas to PNG data URL
+      const pngDataUrl = canvas.toDataURL('image/png');
+      img.src = pngDataUrl;
       
       fixes.push({ element: img, originalSrc });
     } catch (error) {
       console.warn('Failed to convert SVG:', originalSrc, error);
+      // Fallback: try simple data URL conversion
+      try {
+        const response = await fetch(originalSrc);
+        const svgText = await response.text();
+        const dataUrl = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgText);
+        img.src = dataUrl;
+        fixes.push({ element: img, originalSrc });
+      } catch (fallbackError) {
+        console.error('Both SVG conversion methods failed:', fallbackError);
+      }
     }
   }
   
@@ -149,13 +185,13 @@ async function exportAsImage() {
               el.style.backgroundClip = 'unset';
               el.style.color = '#007bff';
               el.style.background = 'transparent';
+              el.style.backgroundImage = 'none';
             }
           });
           
-          // Fix progress bars with gradients
+          // Fix progress bars with gradients - keep them visible
           const progressBars = clonedMain.querySelectorAll('progress');
           progressBars.forEach(progress => {
-            // Progress bars should render with their gradient intact
             progress.style.filter = 'none';
           });
         }
