@@ -189,10 +189,36 @@ async function exportAsImage() {
             }
           });
           
-          // Fix progress bars with gradients - keep them visible
+          // Fix progress bars - replace with divs that render properly
           const progressBars = clonedMain.querySelectorAll('progress');
           progressBars.forEach(progress => {
-            progress.style.filter = 'none';
+            // Get the progress value and max
+            const value = parseFloat(progress.value);
+            const max = parseFloat(progress.max);
+            const percentage = (value / max) * 100;
+            const opacity = progress.style.opacity || 1;
+            
+            // Create a div to replace the progress bar
+            const progressDiv = clonedDoc.createElement('div');
+            progressDiv.style.width = '100%';
+            progressDiv.style.height = '8px';
+            progressDiv.style.backgroundColor = 'transparent';
+            progressDiv.style.position = 'relative';
+            progressDiv.style.margin = progress.style.margin || '0';
+            progressDiv.style.padding = progress.style.padding || '0';
+            
+            // Create the filled portion
+            const progressFill = clonedDoc.createElement('div');
+            progressFill.style.width = percentage + '%';
+            progressFill.style.height = '100%';
+            progressFill.style.background = 'linear-gradient(to right, #49a1ff, #007bff 50%)';
+            progressFill.style.opacity = opacity;
+            progressFill.style.borderRadius = '4px';
+            
+            progressDiv.appendChild(progressFill);
+            
+            // Replace the progress element with the div
+            progress.parentNode.replaceChild(progressDiv, progress);
           });
         }
       }
