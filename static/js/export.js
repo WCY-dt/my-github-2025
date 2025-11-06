@@ -198,14 +198,20 @@ async function exportAsImage() {
             const percentage = (value / max) * 100;
             const opacity = progress.style.opacity || 1;
             
+            // Get computed styles to match exact appearance
+            const computedStyle = window.getComputedStyle(progress);
+            
             // Create a div to replace the progress bar
             const progressDiv = clonedDoc.createElement('div');
             progressDiv.style.width = '100%';
-            progressDiv.style.height = '8px';
+            progressDiv.style.height = '6px'; // Consistent height
             progressDiv.style.backgroundColor = 'transparent';
             progressDiv.style.position = 'relative';
-            progressDiv.style.margin = progress.style.margin || '0';
-            progressDiv.style.padding = progress.style.padding || '0';
+            progressDiv.style.margin = '0';
+            progressDiv.style.padding = '0';
+            progressDiv.style.border = 'none';
+            progressDiv.style.display = 'block';
+            progressDiv.style.alignSelf = 'center'; // Vertically center in grid
             
             // Create the filled portion
             const progressFill = clonedDoc.createElement('div');
@@ -213,7 +219,8 @@ async function exportAsImage() {
             progressFill.style.height = '100%';
             progressFill.style.background = 'linear-gradient(to right, #49a1ff, #007bff 50%)';
             progressFill.style.opacity = opacity;
-            progressFill.style.borderRadius = '4px';
+            progressFill.style.borderRadius = '3px';
+            progressFill.style.display = 'block';
             
             progressDiv.appendChild(progressFill);
             
