@@ -158,6 +158,37 @@ form select {
   width: calc(100% + 2px);
 }
 
+.consent-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.7rem;
+  width: 100%;
+}
+
+.consent-checkbox input[type="checkbox"] {
+  width: auto;
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.consent-checkbox label {
+  font-weight: normal;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.consent-checkbox a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.consent-checkbox a:hover {
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 768px) {
   :root {
     font-size: 14px;

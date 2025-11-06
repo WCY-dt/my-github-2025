@@ -69,6 +69,7 @@ def create_app(config_name="default"):
             "auth.index",
             "auth.login",
             "auth.callback",
+            "main.consent",
         }
 
         # Log current request for debugging

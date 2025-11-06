@@ -141,3 +141,13 @@ def display(year):
         return redirect(url_for("main.wait", year=year))
 
     return redirect(url_for("main.dashboard"))
+
+
+@main_bp.route("/consent", methods=["GET"])
+def consent():
+    """Endpoint for the consent page."""
+    return render_template(
+        "consent.html",
+        project_year=current_app.config["PROJECT_YEAR"],
+        star_repo=current_app.config["STAR_REPO"],
+    )
