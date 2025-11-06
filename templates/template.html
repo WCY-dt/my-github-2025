@@ -9,7 +9,7 @@
   <meta name="keywords" content="GitHub, statistics, 2025, activity, repositories, commits, issues, pull requests">
   <meta name="author" content="Ch3nyang">
   <!-- <link rel="stylesheet" href="https://unpkg.com/@primer/octicons@latest/build/build.css"> -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <link rel="stylesheet" href="{{ url_for('static', filename='style/main.css') }}">
   <link rel="icon" href="{{ url_for('static', filename='img/logo.svg') }}" type="image/svg+xml">
 </head>
@@ -24,7 +24,7 @@
       </svg>
       <span>Star on GitHub</span>
     </button> -->
-    <!-- <button onclick="download()" type="button" id="download">
+    <button onclick="exportAsImage()" type="button" id="export-button">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
         <path
           d="M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Z">
@@ -33,8 +33,8 @@
           d="M7.25 7.689V2a.75.75 0 0 1 1.5 0v5.689l1.97-1.969a.749.749 0 1 1 1.06 1.06l-3.25 3.25a.749.749 0 0 1-1.06 0L4.22 6.78a.749.749 0 1 1 1.06-1.06l1.97 1.969Z">
         </path>
       </svg>
-      <span>Download</span>
-    </button> -->
+      <span>Export as Image</span>
+    </button>
   </div>
   <main>
     <header>
@@ -160,7 +160,7 @@
   <script src="{{ url_for('static', filename='js/commits_per_day.js') }}"></script>
   <script src="{{ url_for('static', filename='js/commits_trending.js') }}"></script>
   <script src="{{ url_for('static', filename='js/preferences.js') }}"></script>
-  <!-- <script src="{{ url_for('static', filename='js/download.js') }}"></script> -->
+  <script src="{{ url_for('static', filename='js/export.js') }}"></script>
   </foot>
 </body>
 
