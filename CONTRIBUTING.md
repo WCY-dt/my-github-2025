@@ -31,6 +31,7 @@ Thank you for considering contributing to My GitHub 2025! We welcome contributio
 4. **Create a GitHub OAuth App** for testing:
 
    Visit [GitHub Developer Settings](https://github.com/settings/developers) and create a new OAuth App with:
+
    - Homepage URL: `http://127.0.0.1:5000`
    - Authorization callback URL: `http://127.0.0.1:5000/callback`
 
@@ -275,6 +276,7 @@ By contributing to My GitHub 2025, you agree that your contributions will be lic
 ## Recognition
 
 Contributors will be recognized in:
+
 - GitHub's contributor list
 - Release notes for significant contributions
 - Special mentions for major features

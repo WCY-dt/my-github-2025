@@ -38,7 +38,8 @@
   </div>
   <main>
     <header>
-      <h1>My GitHub {{ context.year }}</h1>
+      <!-- <h1>My GitHub {{ project_year }}</h1> -->
+      <img src="{{ url_for('static', filename='img/band.svg') }}" alt="My GitHub {{ project_year }}" class="header-image">
     </header>
     <section id="basic-info">
       <div class="social">

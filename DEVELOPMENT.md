@@ -14,22 +14,26 @@ This document provides information for developers working on My GitHub 2025.
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/WCY-dt/my-github-2025.git
    cd my-github-2025
    ```
 
 2. Install production dependencies:
+
    ```bash
    pip install -r requirements.txt
    ```
 
 3. Install development dependencies:
+
    ```bash
    pip install -r requirements-dev.txt
    ```
 
 4. Set up environment variables:
+
    ```bash
    cp .env.example .env
    # Edit .env with your GitHub OAuth credentials
@@ -80,6 +84,7 @@ pre-commit install
 ```
 
 The hooks will automatically run on every commit and check:
+
 - Trailing whitespace
 - File endings
 - YAML/JSON syntax
@@ -144,21 +149,25 @@ open htmlcov/index.html
 We have several automated workflows:
 
 #### 1. Lint and Format Check (`lint.yml`)
+
 - Runs on: Push and PRs to main/develop
 - Checks: pylint, black, flake8, mypy
 - Purpose: Ensure code quality standards
 
 #### 2. Test (`test.yml`)
+
 - Runs on: Push and PRs to main/develop
 - Runs: pytest with coverage
 - Purpose: Validate functionality
 
 #### 3. Format Code (`format.yml`)
+
 - Runs on: PRs
 - Action: Auto-formats code with black
 - Purpose: Maintain consistent code style
 
 #### 4. CI/CD Pipeline (`ci.yml`)
+
 - Runs on: Push to main and PRs
 - Checks: Syntax validation, imports, security (bandit, trufflehog)
 - Purpose: Comprehensive validation
@@ -166,6 +175,7 @@ We have several automated workflows:
 ### Workflow Status
 
 All workflows run automatically on:
+
 - Push to main or develop branches
 - Pull requests to main or develop branches
 
@@ -173,7 +183,7 @@ You can view workflow status in the Actions tab of the repository.
 
 ## Project Structure
 
-```
+```plaintext
 my-github-2025/
 ├── app.py                 # Flask application factory
 ├── main.py                # Application entry point
@@ -216,6 +226,7 @@ my-github-2025/
 ### Adding a New Feature
 
 1. Create a new branch:
+
    ```bash
    git checkout -b feat/your-feature-name
    ```
@@ -223,11 +234,13 @@ my-github-2025/
 2. Make your changes following the code style guidelines
 
 3. Run checks:
+
    ```bash
    make check
    ```
 
 4. Commit with semantic commit message:
+
    ```bash
    git commit -m "feat(scope): description"
    ```
@@ -237,6 +250,7 @@ my-github-2025/
 ### Fixing a Bug
 
 1. Create a bug fix branch:
+
    ```bash
    git checkout -b fix/bug-description
    ```
@@ -244,11 +258,13 @@ my-github-2025/
 2. Fix the issue and add tests if applicable
 
 3. Run checks:
+
    ```bash
    make check
    ```
 
 4. Commit:
+
    ```bash
    git commit -m "fix(scope): description"
    ```
@@ -258,6 +274,7 @@ my-github-2025/
 1. Create test file in `tests/` directory (create if it doesn't exist)
 2. Write tests using pytest
 3. Run tests:
+
    ```bash
    make test
    ```
@@ -267,6 +284,7 @@ my-github-2025/
 ### Import Errors
 
 If you encounter import errors, make sure:
+
 - All dependencies are installed: `pip install -r requirements-dev.txt`
 - You're in the project root directory
 - Python version is 3.12 or higher
@@ -274,6 +292,7 @@ If you encounter import errors, make sure:
 ### Linting Failures
 
 If linting fails:
+
 1. Run `make format` to auto-fix formatting issues
 2. Check the specific error messages
 3. Fix remaining issues manually
@@ -282,6 +301,7 @@ If linting fails:
 ### Database Issues
 
 If you have database issues:
+
 1. Delete the database file: `rm my-github-2025.db`
 2. Restart the application: `make run`
 

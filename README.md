@@ -1,15 +1,15 @@
 <div align="center">
-  <img src="logo.png" alt="logo" />
+  <img src="static/img/band.svg" alt="band" />
 
   Statistics of your activities on GitHub in 2025.
 
   [简体中文](README_zh-CN.md) | English
 
-  [![Server Status](https://img.shields.io/badge/dynamic/json?logo=linux&color=brightgreen&label=Server%20status&query=%24.status&cacheSeconds=600&url=https%3A%2F%2F2025.ch3nyang.top%2Fstatus)](https://2025.ch3nyang.top)
+  [![Server Status](https://img.shields.io/badge/dynamic/json?logo=linux&color=brightgreen&label=Server%20status&query=%24.status&cacheSeconds=600&url=https%3A%2F%2F202x.ch3nyang.top%2Fstatus)](https://202x.ch3nyang.top)
 
   [![GitHub issues](https://img.shields.io/github/issues/WCY-dt/my-github-2025)](https://github.com/WCY-dt/my-github-2025/issues) [![GitHub pull requests](https://img.shields.io/github/issues-pr/WCY-dt/my-github-2025)](https://github.com/WCY-dt/my-github-2025/pulls) [![GitHub license](https://img.shields.io/github/license/WCY-dt/my-github-2025)](https://github.com/WCY-dt/my-github-2025/blob/main/LICENSE)
 
-  <strong style="font-size: 24px;">👉 Try it now: <a href="https://2025.ch3nyang.top">https://2025.ch3nyang.top</a></strong>
+  <strong style="font-size: 24px;">👉 Try it now: <a href="https://202x.ch3nyang.top">https://202x.ch3nyang.top</a></strong>
 </div>
 
 ## Example
@@ -22,7 +22,7 @@
 >
 > **New feature**: Now you can select any year from 2008 to 2025 to generate a report.
 
-1. Visit [https://2025.ch3nyang.top](https://2025.ch3nyang.top).
+1. Visit [https://202x.ch3nyang.top](https://202x.ch3nyang.top).
 
 2. Click the `Sign in with GitHub` button and authorize login.
 
@@ -57,13 +57,13 @@
 4. Install dependencies:
 
     ```bash
-    pip install -r requirements.txt
+    make install
     ```
 
 5. Run the project:
 
     ```bash
-    python my-github-2025.py
+    make run
     ```
 
 6. Visit `http://127.0.0.1:5000` and complete!

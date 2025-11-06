@@ -160,17 +160,15 @@ header {
   grid-row: 6;
 }
 
-h1 {
-  margin: 0;
-  text-align: center;
-  background: linear-gradient(to bottom, var(--black-color) 20%, var(--primary-color));
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  font-size: 48px;
-  font-weight: 900;
-  font-style: normal;
-  margin-bottom: 10px;
+header {
+  width: 100%;
+  margin: 5px auto -25px auto;
+  display: grid;
+  place-content: center;
+}
+
+header img {
+  width: 18cm;
 }
 
 #basic-info {
@@ -442,7 +440,7 @@ h1 {
 }
 
 #footer {
-  margin: 20px auto 0 auto;
+  margin: 0 auto 0 auto;
   text-decoration: none;
   color: var(--gray-color);
   width: max-content;
