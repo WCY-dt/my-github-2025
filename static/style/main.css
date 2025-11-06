@@ -68,13 +68,19 @@ button {
   background-color: rgb(243, 244, 246);
 }
 
-#refresh, #login, #generate, #download {
+#refresh, #login, #generate, #download, #export-button {
   color: rgb(255, 255, 255);
   background-color: rgb(45, 164, 78);
 }
 
-#refresh:hover, #login:hover, #generate:hover, #download:hover {
+#refresh:hover, #login:hover, #generate:hover, #download:hover, #export-button:hover {
   background-color: rgb(44, 151, 75);
+}
+
+#export-button:disabled {
+  background-color: rgb(100, 100, 100);
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 #generate {
