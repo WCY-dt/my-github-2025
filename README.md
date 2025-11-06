@@ -1,15 +1,15 @@
 <div align="center">
-  <img src="logo.png" alt="logo" />
+  <img src="static/img/band.svg" alt="band" />
 
-  Statistics of your activities on GitHub in 2024.
+  Statistics of your activities on GitHub in 2025.
 
   [简体中文](README_zh-CN.md) | English
 
-  [![Server Status](https://img.shields.io/badge/dynamic/json?logo=linux&color=brightgreen&label=Server%20status&query=%24.status&cacheSeconds=600&url=https%3A%2F%2F2024.ch3nyang.top%2Fstatus)](https://2024.ch3nyang.top)
+  [![Server Status](https://img.shields.io/badge/dynamic/json?logo=linux&color=brightgreen&label=Server%20status&query=%24.status&cacheSeconds=600&url=https%3A%2F%2F202x.ch3nyang.top%2Fstatus)](https://202x.ch3nyang.top)
 
-  [![GitHub issues](https://img.shields.io/github/issues/WCY-dt/my-github-2024)](https://github.com/WCY-dt/my-github-2024/issues) [![GitHub pull requests](https://img.shields.io/github/issues-pr/WCY-dt/my-github-2024)](https://github.com/WCY-dt/my-github-2024/pulls) [![GitHub license](https://img.shields.io/github/license/WCY-dt/my-github-2024)](https://github.com/WCY-dt/my-github-2024/blob/main/LICENSE)
+  [![GitHub issues](https://img.shields.io/github/issues/WCY-dt/my-github-2025)](https://github.com/WCY-dt/my-github-2025/issues) [![GitHub pull requests](https://img.shields.io/github/issues-pr/WCY-dt/my-github-2025)](https://github.com/WCY-dt/my-github-2025/pulls) [![GitHub license](https://img.shields.io/github/license/WCY-dt/my-github-2025)](https://github.com/WCY-dt/my-github-2025/blob/main/LICENSE)
 
-  <strong style="font-size: 24px;">👉 Try it now: <a href="https://2024.ch3nyang.top">https://2024.ch3nyang.top</a></strong>
+  <strong style="font-size: 24px;">👉 Try it now: <a href="https://202x.ch3nyang.top">https://202x.ch3nyang.top</a></strong>
 </div>
 
 ## Example
@@ -20,13 +20,13 @@
 
 > [!TIP]
 >
-> **New feature**: Now you can select any year from 2008 to 2024 to generate a report.
+> **New feature**: Now you can select any year from 2008 to 2025 to generate a report.
 
-1. Visit [https://2024.ch3nyang.top](https://2024.ch3nyang.top).
+1. Visit [https://202x.ch3nyang.top](https://202x.ch3nyang.top).
 
 2. Click the `Sign in with GitHub` button and authorize login.
 
-3. Select your time zone and the year you want to generate, then click the `Generate` button, wait a few seconds, and you can view your activities on GitHub in 2024.
+3. Select your time zone and the year you want to generate, then click the `Generate` button, wait a few seconds, and you can view your activities on GitHub in 2025.
 
 ## Run locally
 
@@ -37,8 +37,8 @@
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/WCY-dt/my-github-2024.git
-    cd my-github-2024
+    git clone https://github.com/WCY-dt/my-github-2025.git
+    cd my-github-2025
     ```
 
 2. Create a Github OAuth App:
@@ -57,13 +57,13 @@
 4. Install dependencies:
 
     ```bash
-    pip install -r requirements.txt
+    make install
     ```
 
 5. Run the project:
 
     ```bash
-    python my-github-2024.py
+    make run
     ```
 
 6. Visit `http://127.0.0.1:5000` and complete!

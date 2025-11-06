@@ -1,0 +1,50 @@
+name: Lint and Format Check
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  lint-and-format:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+        cache: 'pip'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pylint black flake8 mypy
+        
+    - name: Run pylint
+      run: |
+        pylint app.py main.py config/ models/ routes/ services/ utils/ \
+          --rcfile=.pylintrc \
+          --disable=E0401 \
+          --exit-zero
+        
+    - name: Check code formatting with black
+      run: |
+        black --check --diff app.py main.py config/ models/ routes/ services/ utils/
+        
+    - name: Run flake8
+      run: |
+        flake8 app.py main.py config/ models/ routes/ services/ utils/ \
+          --max-line-length=100 \
+          --extend-ignore=E203,W503 \
+          --exclude=__pycache__,.git
+        
+    - name: Type checking with mypy
+      run: |
+        mypy app.py main.py --ignore-missing-imports --no-strict-optional
+      continue-on-error: true

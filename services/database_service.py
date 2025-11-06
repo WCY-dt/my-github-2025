@@ -3,21 +3,22 @@ Database service for handling database operations.
 """
 
 import logging
+from typing import Optional
 from sqlalchemy import and_
 from models.models import db, RequestedUser, UserContext
 
 
 class DatabaseService:
     """Service for database operations."""
-    
+
     @staticmethod
-    def init_db():
+    def init_db() -> None:
         """Initialize the database."""
         db.create_all()
         DatabaseService._cleanup_orphaned_users()
-    
+
     @staticmethod
-    def _cleanup_orphaned_users():
+    def _cleanup_orphaned_users() -> None:
         """Clean up users without context data."""
         missing_users = (
             db.session.query(RequestedUser)
@@ -35,23 +36,23 @@ class DatabaseService:
                 username=user.username, year=user.year
             ).delete()
         db.session.commit()
-    
+
     @staticmethod
-    def get_user_context(username: str, year: int) -> UserContext:
+    def get_user_context(username: str, year: int) -> Optional[UserContext]:
         """Get user context from database."""
         return UserContext.query.filter(
             and_(UserContext.username == username, UserContext.year == year)
         ).first()
-    
+
     @staticmethod
-    def get_requested_user(username: str, year: int) -> RequestedUser:
+    def get_requested_user(username: str, year: int) -> Optional[RequestedUser]:
         """Get requested user from database."""
         return RequestedUser.query.filter(
             and_(RequestedUser.username == username, RequestedUser.year == year)
         ).first()
-    
+
     @staticmethod
-    def add_requested_user(username: str, year: int):
+    def add_requested_user(username: str, year: int) -> bool:
         """Add a new requested user."""
         try:
             requested_user = RequestedUser(username=username, year=year)
@@ -62,14 +63,12 @@ class DatabaseService:
             logging.error("Error saving requested user: %s", e)
             db.session.rollback()
             return False
-    
+
     @staticmethod
-    def add_user_context(username: str, year: int, context: str):
+    def add_user_context(username: str, year: int, context: str) -> bool:
         """Add user context to database."""
         try:
-            user_context = UserContext(
-                username=username, context=context, year=year
-            )
+            user_context = UserContext(username=username, context=context, year=year)
             db.session.add(user_context)
             db.session.commit()
             return True

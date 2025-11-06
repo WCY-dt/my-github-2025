@@ -12,7 +12,8 @@
   </head>
 
   <body>
-    <h1>My GitHub {{ project_year }}</h1>
+    <!-- <h1>My GitHub {{ project_year }}</h1> -->
+    <img src="{{ url_for('static', filename='img/band.svg') }}" alt="My GitHub {{ project_year }}" class="header-image">
     <div class="button">
       <button onclick="window.open('https://github.com/{{ star_repo }}', '_blank')" type="button" id="star">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20">

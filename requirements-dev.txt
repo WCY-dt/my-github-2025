@@ -1,0 +1,20 @@
+# Development dependencies
+# Install with: pip install -r requirements-dev.txt
+
+# Production dependencies
+-r requirements.txt
+
+# Linting and formatting
+pylint>=3.0.0
+black>=23.0.0
+flake8>=7.0.0
+mypy>=1.0.0
+
+# Testing
+pytest>=7.0.0
+pytest-cov>=4.0.0
+pytest-flask>=1.2.0
+
+# Security
+bandit>=1.7.0
+

@@ -5,13 +5,23 @@ Main application routes.
 import json
 import logging
 from datetime import datetime
-from flask import Blueprint, jsonify, redirect, render_template, request, session, url_for, current_app
+from flask import (
+    Blueprint,
+    jsonify,
+    redirect,
+    render_template,
+    request,
+    session,
+    url_for,
+    current_app,
+)
 
+from config.config import Config
 from services.database_service import DatabaseService
 from services.github_service import GitHubService
 from services.data_service import DataService
 
-main_bp = Blueprint('main', __name__)
+main_bp = Blueprint("main", __name__)
 
 
 @main_bp.route("/dashboard", methods=["GET"])
@@ -22,7 +32,7 @@ def dashboard():
 
     access_token = session.get("access_token")
     user_data = GitHubService.get_user_info(access_token)
-    
+
     if not user_data:
         return redirect(url_for("auth.index"))
 
@@ -35,8 +45,8 @@ def dashboard():
         user=user_data,
         access_token=access_token,
         current_year=current_year,
-        project_year=current_app.config['PROJECT_YEAR'],
-        star_repo=current_app.config['STAR_REPO']
+        project_year=current_app.config["PROJECT_YEAR"],
+        star_repo=current_app.config["STAR_REPO"],
     )
 
 
@@ -78,46 +88,56 @@ def load():
     return jsonify({"redirect_url": url_for("main.wait", year=year)})
 
 
-@main_bp.route("/wait/<path:year>", methods=["GET"])
+@main_bp.route("/wait/<int:year>", methods=["GET"])
 def wait(year):
     """Endpoint for the wait page."""
     if not session.get("access_token"):
         return redirect(url_for("auth.index"))
 
+    # Validate year range
+    if not Config.MIN_YEAR <= year <= Config.CURRENT_YEAR:
+        return redirect(url_for("main.dashboard"))
+
     username = session.get("username")
 
     # Check if processing is complete
-    if DatabaseService.get_user_context(username, int(year)):
+    if DatabaseService.get_user_context(username, year):
         return redirect(url_for("main.display", year=year))
 
     # Check if request exists
-    if DatabaseService.get_requested_user(username, int(year)):
-        return render_template("wait.html", year=year, project_year=current_app.config['PROJECT_YEAR'])
+    if DatabaseService.get_requested_user(username, year):
+        return render_template(
+            "wait.html", year=year, project_year=current_app.config["PROJECT_YEAR"]
+        )
 
     return redirect(url_for("main.dashboard"))
 
 
-@main_bp.route("/display/<path:year>", methods=["GET"])
+@main_bp.route("/display/<int:year>", methods=["GET"])
 def display(year):
     """Endpoint for the display page."""
     if not session.get("access_token"):
         return redirect(url_for("auth.index"))
 
-    username = session.get("username")
-    user_context = DatabaseService.get_user_context(username, int(year))
+    # Validate year range
+    if not Config.MIN_YEAR <= year <= Config.CURRENT_YEAR:
+        return redirect(url_for("main.dashboard"))
 
-    logging.info("Display user context: %s", username)
+    username = session.get("username")
+    user_context = DatabaseService.get_user_context(username, year)
+
+    logging.info("Display user context: %s for year %d", username, year)
 
     if user_context:
         return render_template(
-            "template.html", 
+            "template.html",
             context=json.loads(user_context.context),
-            project_year=current_app.config['PROJECT_YEAR'],
-            star_repo=current_app.config['STAR_REPO']
+            project_year=current_app.config["PROJECT_YEAR"],
+            star_repo=current_app.config["STAR_REPO"],
         )
 
     # If no context but request exists, redirect to wait
-    if DatabaseService.get_requested_user(username, int(year)):
+    if DatabaseService.get_requested_user(username, year):
         return redirect(url_for("main.wait", year=year))
 
     return redirect(url_for("main.dashboard"))

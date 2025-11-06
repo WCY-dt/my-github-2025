@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="b" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1221 252.1348">
+  <defs>
+    <style>
+      .d {
+        fill: #49a1ff;
+      }
+
+      .d, .e {
+        font-family: Impact, Impact;
+        font-size: 205.5239px;
+        letter-spacing: -.05em;
+      }
+
+      .e {
+        fill: #6f42c1;
+      }
+    </style>
+  </defs>
+  <g id="c">
+    <text class="d" transform="translate(1017.0001 183.9984)"><tspan x="0" y="0">25</tspan></text>
+    <text class="e" transform="translate(1.431 184.1958)"><tspan x="0" y="0">MY GITHUB 20</tspan></text>
+  </g>
+</svg>

@@ -18,17 +18,9 @@ body {
   flex-direction: column;
 }
 
-h1 {
-  margin: 0;
-  text-align: center;
-  background: linear-gradient(to bottom, var(--black-color) 20%, var(--primary-color));
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  font-size: 4rem;
-  font-weight: 900;
-  font-style: normal;
-  margin-bottom: 3.25rem;
+img {
+  margin: 0 auto 3.25rem auto;
+  width: min(95%, 60rem);
 }
 
 .button {
